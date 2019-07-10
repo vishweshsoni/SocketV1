@@ -11,13 +11,14 @@
     "url": "git+https://github.com/vishweshsoni/SocketV1.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "vishwesh_soni",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vishweshsoni/SocketV1/issues"
   },
   "homepage": "https://github.com/vishweshsoni/SocketV1#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "socket.io": "^2.2.0"
   }
 }
