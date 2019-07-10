@@ -1,0 +1,23 @@
+{
+  "name": "SocketV1",
+  "version": "1.0.0",
+  "description": "Demo app for Socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishweshsoni/SocketV1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishweshsoni/SocketV1/issues"
+  },
+  "homepage": "https://github.com/vishweshsoni/SocketV1#readme",
+  "dependencies": {
+    "socket.io": "^2.2.0"
+  }
+}
