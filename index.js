@@ -20,3 +20,6 @@ io.on('connection',function(socket){
             io.sockets.in(isAlive.room).emit('Isallive',isAlive);
         });
 });
+http.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+  });
