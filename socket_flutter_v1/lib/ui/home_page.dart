@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socket_flutter_v1/utilities/size_config.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -14,33 +15,44 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
+
         backgroundColor: Colors.blueAccent,
         body: Container(
 
-           alignment: FractionalOffset.center,
+
             child: Column(
               children: <Widget>[
-                MaterialButton(
-                    color: Colors.grey,
-                    child: Text('Room1',style: TextStyle(color: Colors.black),),
-                    onPressed: ()=>{
-
-                       }
-                    ),
-                MaterialButton(
-                    color: Colors.grey,
-                    child: Text('Room2',style: TextStyle(color: Colors.black),),
-                    onPressed: ()=>{
-
-                    }
+                SizedBox(
+                  height:SizeConfig.blockSizeHorizontal*60,
                 ),
-                MaterialButton(
-                    color: Colors.grey,
-                    child: Text('Room3',style: TextStyle(color: Colors.black),),
-                    onPressed: ()=>{
+                Center(
+                  child: Column(
+                    children: <Widget>[
+                      MaterialButton(
+                          color: Colors.grey,
+                          child: Text('Room-1',style: TextStyle(color: Colors.black),),
+                          onPressed: ()=>{
 
-                    }
+                          }
+                      ),
+                      MaterialButton(
+                          color: Colors.grey,
+                          child: Text('Room-2',style: TextStyle(color: Colors.black),),
+                          onPressed: ()=>{
+
+                          }
+                      ),
+                      MaterialButton(
+                          color: Colors.grey,
+                          child: Text('Room-3',style: TextStyle(color: Colors.black),),
+                          onPressed: ()=>{
+
+                          }
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
