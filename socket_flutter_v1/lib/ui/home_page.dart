@@ -48,30 +48,25 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.grey,
                       child: Text('Room-1',style:TextStyle(color: Colors.black)),
                       onPressed: ()async{
-
                         Navigator.pushNamed(context,'/Room1');
                       }
                   ),
-//            ChangeNotifierProvider<SocketProvider2>.value(
-//              value:SocketProvider2(),
-//              child:  MaterialButton(
-//                  color: Colors.grey,
-//                  child: Text('Room-2',style: TextStyle(color: Colors.black),),
-//                  onPressed: (){
-//                    Navigator.pushNamed(context, '/Room2');
-//                  }
-//              ),
-//            ),
-//          ChangeNotifierProvider<SocketProvider3>.value(
-//            value:SocketProvider3(),
-//            child:  MaterialButton(
-//                color: Colors.grey,
-//                child: Text('Room-3',style: TextStyle(color: Colors.black),),
-//                onPressed: (){
-//                  Navigator.pushNamed(context, '/Room3');
-//                }
-//            ),
-//          ),
+
+                MaterialButton(
+                  color: Colors.grey,
+                  child: Text('Room-2',style: TextStyle(color: Colors.black),),
+                  onPressed: (){
+                    Navigator.pushNamed(context, '/Room2');
+                  }
+              ),
+
+                  MaterialButton(
+                color: Colors.grey,
+                child: Text('Room-3',style: TextStyle(color: Colors.black),),
+                onPressed: (){
+                  Navigator.pushNamed(context, '/Room3');
+                  }
+                     ),
 
                     ],
                   ),

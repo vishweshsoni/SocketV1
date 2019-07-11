@@ -1,4 +1,6 @@
-  import 'package:flutter/material.dart';
+  import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/ui/transper_page1.dart';
 import 'package:socket_flutter_v1/ui/transport_page2.dart';
@@ -13,7 +15,12 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-
+    Timer(
+        Duration(seconds: 1),
+            () {
+            SocketProvider().connectSocket("hi");
+        }
+    );
     return ChangeNotifierProvider(
       builder:(context)=>SocketProvider(),
       child: Scaffold(
