@@ -14,10 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider<SocketProvider>.value(
-          value: SocketProvider(),
-          child: HomePage()
-      ),
+      home: HomePage(),
     );
   }
 }
