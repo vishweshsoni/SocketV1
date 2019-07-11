@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/ui/home_page.dart';
+import 'package:socket_flutter_v1/utilities/socket_provider.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,7 +14,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ChangeNotifierProvider<SocketProvider>.value(
+          value: SocketProvider(),
+          child: HomePage()
+      ),
     );
   }
 }

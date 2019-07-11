@@ -5,7 +5,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.set('port', (process.env.PORT || 5000));
-
+app.get('/', function(req, res){
+    res.send('hello world');
+  });
 io.on('connection',function(socket){
         console.log('User Connection');
         socket.on('subscribe',function(room){
