@@ -15,6 +15,7 @@ io.on('connection',function(socket){
             socket.join(room);
         });
         socket.on('subscribe',function(data){
+        	console.log(data);
         	io.sockets.emit('subscribe',data);
         });
         socket.on('unsubscribe',function(room){
