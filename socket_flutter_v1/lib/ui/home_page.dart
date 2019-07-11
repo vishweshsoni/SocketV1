@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    var appState= Provider.of<SocketProvider>(context);
     SizeConfig().init(context);
 
 
@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.grey,
                       child: Text('Room-1',style:TextStyle(color: Colors.black)),
                       onPressed: ()async{
+
                         Navigator.pushNamed(context,'/Room1');
                       }
                   ),

@@ -9,7 +9,6 @@ class TransportPage1 extends StatefulWidget {
 }
 
 class _TransportPage1State extends State<TransportPage1> {
-  @override
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class _TransportPage1State extends State<TransportPage1> {
     return MaterialButton(
         height: 75.0,
         minWidth: 120.0,
-        color: Colors.white,
+        color:appState.button1 ? Colors.red:Colors.white,
         child: Text('',style:TextStyle(color: Colors.black)),
         onPressed: ()async{
           await appState.connectSocket('button1');

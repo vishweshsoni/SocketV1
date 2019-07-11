@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -7,28 +8,58 @@ import 'package:flutter_socket_io/flutter_socket_io.dart';
 import 'package:flutter_socket_io/socket_io_manager.dart';
 class SocketProvider with ChangeNotifier{
   SocketIO socketIO ;
+  bool button1= false;
+  bool button2= false;
+  bool button3= false;
   bool connect= false;
   connectSocket(String str) async{
     socketIO = SocketIOManager().createSocketIO("https://arcane-dusk-93500.herokuapp.com","/");
     socketIO.init();
     socketIO.connect();
-
+    notifyListeners();
 
     if(socketIO!=null){
       try{
         String jsonData = '{"message":"$str"}';
         socketIO.sendMessage('subscribe', jsonData,(dynamic data){
             print(data);
+            notifyListeners();
         });
 
       }catch(e){
         print(e);
+        notifyListeners();
       }
     }
 
     socketIO.subscribe('subscribe', (dynamic data){
-      print(data);
+      if(data.contains("button1")){
+          button1=true;
+          notifyListeners();
+
+      }
+      if(data.contains("button2")){
+        button2=true;
+        notifyListeners();
+
+      }
+      if(data.contains("button3")){
+        button3=true;
+        notifyListeners();
+
+      }
     });
+
+    Timer(
+        Duration(seconds: 25),
+            () {
+          button1=false;
+          button2=false;
+          button3=false;
+          notifyListeners();
+        }
+    );
+
 
 //
 //    SocketIO socket = await SocketIOManager().createInstance('https://arcane-dusk-93500.herokuapp.com/',enableLogging: true,query: {

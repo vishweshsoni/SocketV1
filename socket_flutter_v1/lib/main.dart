@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
         '/Tp1' :(context)=>TransportPage1(),
       },
       debugShowCheckedModeBanner: false,
-          home:HomePage(),
+          home:ChangeNotifierProvider(
+              builder: (context)=>SocketProvider(),
+              child: HomePage()),
     );
   }
 }
