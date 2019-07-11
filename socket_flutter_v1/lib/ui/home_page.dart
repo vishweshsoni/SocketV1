@@ -11,80 +11,119 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   SocketIOManager manager;
   SocketIO socket;
-  bool isProbablyConnected = false;
+  bool isConnected= false;
   bool ledState = false;
-
   @override
   void initState() {
+    // TODO: implement initState
+    manager= SocketIOManager();
     super.initState();
-    manager = SocketIOManager();
-    initSocket();
   }
-
-  initSocket() async {
-    setState(() => isProbablyConnected = true);
-    socket = await manager.createInstance(uri, enableLogging: false);
-    socket.onConnect((data) {
-      print("connected...");
+  initSocket() async{
+    setState(() {
+      isConnected = true;
+    });
+  socket= await manager
+          .createInstance(uri,enableLogging: false);
+  socket.onConnect((data){
+      print('connected');
       print(data);
       sendMessage();
-    });
-    socket.onConnectError(print);
-    socket.onConnectTimeout(print);
-    socket.onError(print);
-    socket.onDisconnect(print);
-    socket.connect();
+      socket.onConnectError(print);
+      socket.onConnectTimeout(print);
+      socket.onError(print);
+      socket.onDisconnect(print);
+      socket.connect();
+  });
   }
 
 
   disconnect() async {
     await manager.clearInstance(socket);
-    setState(() => isProbablyConnected = false);
+    setState(() => isConnected = false);
   }
 
 
   sendMessage() {
     if (socket != null) {
       print("sending message...");
-      socket.emit(ledState == true ? "ledOff" : "ledOn", ['FLUTTER SAYS HEI']);
+      socket.emit(ledState == true ? "subscribe" : "subscribe", ['hei']);
       print("Message emitted...");
       setState(() {
         ledState = !ledState;
       });
     }
   }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Socket.IO example'),
-        ),
+
+    SizeConfig().init(context);
+
+
+    return Scaffold(
+        appBar: AppBar(title:Text('SocketIOExample',style: TextStyle(color: Colors.black),),backgroundColor: Colors.grey,),
+        backgroundColor: Colors.blueAccent,
         body: Container(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 250.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      onPressed: sendMessage,
-                      child:
-                      ledState == true ? Text('LED Off') : Text('LED On'),
-                    )
-                  ],
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height:SizeConfig.blockSizeHorizontal*60,
                 ),
-              )
-            ],
-          ),
+                Center(
+                  child: Column(
+                    children: <Widget>[
+                      m1(),
+                      m2(),
+                      m3(),
+
+                    ],
+                  ),
+                ),
+              ],
+            ),
         ),
+    );
+
+  }
+  Widget m1(){
+    return  ChangeNotifierProvider<SocketProvider>.value(
+        value:SocketProvider(),
+        child: MaterialButton(
+            color: Colors.grey,
+            child: Text('Room-1',style:TextStyle(color: Colors.black)),
+            onPressed: ()async{
+              Navigator.pushNamed(context, '/Room1');
+            }
+        )
+    );
+
+  }
+  Widget m2(){
+    return  ChangeNotifierProvider<SocketProvider>.value(
+        value:SocketProvider(),
+        child:  MaterialButton(
+            color: Colors.grey,
+            child: Text('Room-2',style: TextStyle(color: Colors.black),),
+            onPressed: (){
+              Navigator.pushNamed(context, '/Room2');
+            }
+        ),
+    );
+
+  }
+  Widget m3(){
+    return  ChangeNotifierProvider<SocketProvider>.value(
+      value:SocketProvider(),
+      child:  MaterialButton(
+          color: Colors.grey,
+          child: Text('Room-3',style: TextStyle(color: Colors.black),),
+          onPressed: (){
+            Navigator.pushNamed(context, '/Room3');
+          }
       ),
     );
+
   }
 }
