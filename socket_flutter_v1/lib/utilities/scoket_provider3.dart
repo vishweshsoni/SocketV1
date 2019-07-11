@@ -15,15 +15,16 @@ class SocketProvider3 with ChangeNotifier{
       "timestamp": DateTime.now().toString()
     },);
     socket.onConnect((data){
-
       notifyListeners();
-      print(data);
-
     });
     connect=true;
     notifyListeners();
-
     socket.emit('subscribe',['$str']);
+    socket.on('subscribe',(data){
+      dynamic res =data;
+      print(res);
+    });
+
     print('message emmited');
 
 

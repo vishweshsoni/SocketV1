@@ -26,6 +26,8 @@ dependencies:
   adhara_socket_io: ^0.1.11
   provider: ^3.0.0
   flutter_socket_io: ^0.4.7
+  socket_flutter_plugin: ^0.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
