@@ -17,7 +17,7 @@ class _TransportPage2State extends State<TransportPage2> {
     return MaterialButton(
         height: 75.0,
         minWidth: 120.0,
-        color:appState.button1 ? Colors.red:Colors.white,
+        color:appState.button2 ? Colors.red:Colors.white,
         child: Text('',style:TextStyle(color: Colors.black)),
         onPressed: ()async{
           await appState.connectSocket('button2');
