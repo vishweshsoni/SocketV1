@@ -11,7 +11,7 @@ app.get('/', function(req, res){
 io.on('connection',function(socket){
         console.log('User Connection');
         socket.on('subscribe',function(room){
-        	sockets.emit('fromservertoclient',room);
+        	socket.emit('fromservertoclient',room);
             console.log('Joining room',room);
             socket.join(room);
         });
