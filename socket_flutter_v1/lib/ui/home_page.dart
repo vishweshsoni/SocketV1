@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adhara_socket_io/adhara_socket_io.dart';
+import 'package:socket_flutter_v1/utilities/scoket_provider2.dart';
+import 'package:socket_flutter_v1/utilities/scoket_provider3.dart';
 import 'package:socket_flutter_v1/utilities/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/utilities/socket_provider.dart';
@@ -101,8 +103,8 @@ class _HomePageState extends State<HomePage> {
 
   }
   Widget m2(){
-    return  ChangeNotifierProvider<SocketProvider>.value(
-        value:SocketProvider(),
+    return  ChangeNotifierProvider<SocketProvider2>.value(
+        value:SocketProvider2(),
         child:  MaterialButton(
             color: Colors.grey,
             child: Text('Room-2',style: TextStyle(color: Colors.black),),
@@ -114,8 +116,8 @@ class _HomePageState extends State<HomePage> {
 
   }
   Widget m3(){
-    return  ChangeNotifierProvider<SocketProvider>.value(
-      value:SocketProvider(),
+    return  ChangeNotifierProvider<SocketProvider3>.value(
+      value:SocketProvider3(),
       child:  MaterialButton(
           color: Colors.grey,
           child: Text('Room-3',style: TextStyle(color: Colors.black),),

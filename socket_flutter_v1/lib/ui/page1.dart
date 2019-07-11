@@ -27,7 +27,7 @@ class _Page1State extends State<Page1> {
                       color: Colors.grey,
                       child: Text('',style:TextStyle(color: Colors.black)),
                       onPressed: ()async{
-
+                        await appState.connectSocket('button1');
                       }
                   ),
                   MaterialButton(

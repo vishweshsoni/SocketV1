@@ -5,7 +5,7 @@ import 'dart:io';
 //import 'package:adhara_socket_io/adhara_socket_io.dart';
 class SocketProvider with ChangeNotifier{
   bool connect= false;
-  connectSocket() async{
+  connectSocket(String str) async{
     print('called');
 
 
@@ -23,9 +23,7 @@ class SocketProvider with ChangeNotifier{
       connect=true;
       notifyListeners();
 
-      socket.emit('subscribe',['user1']);
-      socket.emit('subscribe',['user2']);
-      socket.emit('subscribe',['user3']);
+      socket.emit('subscribe',['$str']);
       print('message emmited');
 
 
