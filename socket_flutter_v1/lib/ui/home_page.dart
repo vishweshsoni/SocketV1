@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:adhara_socket_io/adhara_socket_io.dart';
 import 'package:socket_flutter_v1/utilities/scoket_provider2.dart';
 import 'package:socket_flutter_v1/utilities/scoket_provider3.dart';
 import 'package:socket_flutter_v1/utilities/size_config.dart';
@@ -13,51 +12,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  SocketIOManager manager;
-  SocketIO socket;
-  bool isConnected= false;
-  bool ledState = false;
-  @override
+
   void initState() {
     // TODO: implement initState
-    manager= SocketIOManager();
+
     super.initState();
   }
-  initSocket() async{
-    setState(() {
-      isConnected = true;
-    });
-  socket= await manager
-          .createInstance(uri,enableLogging: false);
-  socket.onConnect((data){
-      print('connected');
-      print(data);
-      sendMessage();
-      socket.onConnectError(print);
-      socket.onConnectTimeout(print);
-      socket.onError(print);
-      socket.onDisconnect(print);
-      socket.connect();
-  });
-  }
 
 
-  disconnect() async {
-    await manager.clearInstance(socket);
-    setState(() => isConnected = false);
-  }
 
 
-  sendMessage() {
-    if (socket != null) {
-      print("sending message...");
-      socket.emit(ledState == true ? "subscribe" : "subscribe", ['hei']);
-      print("Message emitted...");
-      setState(() {
-        ledState = !ledState;
-      });
-    }
-  }
+
+
+
   @override
   Widget build(BuildContext context) {
 

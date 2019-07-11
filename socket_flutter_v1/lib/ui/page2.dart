@@ -11,7 +11,7 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<SocketProvider2>(context);
+    final appState = Provider.of<SocketProvider>(context);
     return Scaffold(
       appBar: AppBar(title:Text('Room2',style: TextStyle(color: Colors.black)),backgroundColor: Colors.white,),
       backgroundColor: Colors.lightBlueAccent,

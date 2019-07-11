@@ -23,10 +23,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  adhara_socket_io: ^0.1.11
   provider: ^3.0.0
   flutter_socket_io: ^0.4.7
-  socket_flutter_plugin: ^0.0.1
+
   
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/utilities/scoket_provider3.dart';
 import 'package:socket_flutter_v1/utilities/size_config.dart';
+import 'package:socket_flutter_v1/utilities/socket_provider.dart';
 
 class Page3 extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class Page3 extends StatefulWidget {
 class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
-    final appState = Provider.of<SocketProvider3>(context);
+    final appState = Provider.of<SocketProvider>(context);
     return Scaffold(
 
       appBar: AppBar(title:Text('Room3',style: TextStyle(color: Colors.black)),backgroundColor: Colors.white,),
