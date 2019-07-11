@@ -23,8 +23,7 @@ class SocketProvider with ChangeNotifier{
       notifyListeners();
       socket.emit('subscribe',['$str']);
       socket.on('subscribe',(data){
-        print(data+"hi");
-        debugPrint(data+"hi");
+            print(data);
       });
 
       print('message emmited');
