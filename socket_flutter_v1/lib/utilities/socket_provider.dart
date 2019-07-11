@@ -12,14 +12,23 @@ class SocketProvider with ChangeNotifier{
     socketIO = SocketIOManager().createSocketIO("https://arcane-dusk-93500.herokuapp.com","/");
     socketIO.init();
     socketIO.connect();
-    try{
-      String jsonData = '{"message":"$str"}';
-      socketIO.sendMessage('subscribe', jsonData,(data){print(data);});
-    }catch(e){
-      print(e);
+
+
+    if(socketIO!=null){
+      try{
+        String jsonData = '{"message":"$str"}';
+        socketIO.sendMessage('subscribe', jsonData,(dynamic data){
+            print(data);
+        });
+
+      }catch(e){
+        print(e);
+      }
     }
 
-    socketIO.subscribe('subscribe', (dynamic data){print(data);});
+    socketIO.subscribe('subscribe', (dynamic data){
+      print(data);
+    });
 
 //
 //    SocketIO socket = await SocketIOManager().createInstance('https://arcane-dusk-93500.herokuapp.com/',enableLogging: true,query: {

@@ -10,10 +10,12 @@ app.get('/', function(req, res){
   });
 io.on('connection',function(socket){
         console.log('User Connection');
-        socket.on('subscribe',function(room){
-        	io.sockets.emit('subscribe',room);
+        socket.on('join',function(room){
             console.log('Joining room',room);
             socket.join(room);
+        });
+        socket.on('subscribe',function(data){
+        	io.sockets.emit('subscribe',data);
         });
         socket.on('unsubscribe',function(room){
             console.log('Leaving room',room);
