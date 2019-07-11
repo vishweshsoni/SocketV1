@@ -4,6 +4,7 @@ import 'package:socket_flutter_v1/ui/home_page.dart';
 import 'package:socket_flutter_v1/ui/page1.dart';
 import 'package:socket_flutter_v1/ui/page2.dart';
 import 'package:socket_flutter_v1/ui/page3.dart';
+import 'package:socket_flutter_v1/ui/transper_page1.dart';
 import 'package:socket_flutter_v1/utilities/socket_provider.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/Room1':(context)=>Page1(),
         '/Room2':(context)=>Page2(),
         '/Room3':(context)=>Page3(),
+        '/Tp1' :(context)=>TransportPage1(),
       },
       debugShowCheckedModeBanner: false,
           home:HomePage(),

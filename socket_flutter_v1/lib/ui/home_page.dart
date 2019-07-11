@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
 
 
     return Scaffold(
+
         appBar: AppBar(title:Text('SocketIOExample',style: TextStyle(color: Colors.black),),backgroundColor: Colors.grey,),
         backgroundColor: Colors.blueAccent,
         body: Container(
@@ -76,9 +77,33 @@ class _HomePageState extends State<HomePage> {
                 Center(
                   child: Column(
                     children: <Widget>[
-                      m1(),
-                      m2(),
-                      m3(),
+                  MaterialButton(
+                      color: Colors.grey,
+                      child: Text('Room-1',style:TextStyle(color: Colors.black)),
+                      onPressed: ()async{
+                        Navigator.pushNamed(context,'/Room1');
+                      }
+                  ),
+//            ChangeNotifierProvider<SocketProvider2>.value(
+//              value:SocketProvider2(),
+//              child:  MaterialButton(
+//                  color: Colors.grey,
+//                  child: Text('Room-2',style: TextStyle(color: Colors.black),),
+//                  onPressed: (){
+//                    Navigator.pushNamed(context, '/Room2');
+//                  }
+//              ),
+//            ),
+//          ChangeNotifierProvider<SocketProvider3>.value(
+//            value:SocketProvider3(),
+//            child:  MaterialButton(
+//                color: Colors.grey,
+//                child: Text('Room-3',style: TextStyle(color: Colors.black),),
+//                onPressed: (){
+//                  Navigator.pushNamed(context, '/Room3');
+//                }
+//            ),
+//          ),
 
                     ],
                   ),
@@ -89,43 +114,5 @@ class _HomePageState extends State<HomePage> {
     );
 
   }
-  Widget m1(){
-    return  ChangeNotifierProvider<SocketProvider>.value(
-        value:SocketProvider(),
-        child: MaterialButton(
-            color: Colors.grey,
-            child: Text('Room-1',style:TextStyle(color: Colors.black)),
-            onPressed: ()async{
-              Navigator.pushNamed(context, '/Room1');
-            }
-        )
-    );
 
-  }
-  Widget m2(){
-    return  ChangeNotifierProvider<SocketProvider2>.value(
-        value:SocketProvider2(),
-        child:  MaterialButton(
-            color: Colors.grey,
-            child: Text('Room-2',style: TextStyle(color: Colors.black),),
-            onPressed: (){
-              Navigator.pushNamed(context, '/Room2');
-            }
-        ),
-    );
-
-  }
-  Widget m3(){
-    return  ChangeNotifierProvider<SocketProvider3>.value(
-      value:SocketProvider3(),
-      child:  MaterialButton(
-          color: Colors.grey,
-          child: Text('Room-3',style: TextStyle(color: Colors.black),),
-          onPressed: (){
-            Navigator.pushNamed(context, '/Room3');
-          }
-      ),
-    );
-
-  }
 }
