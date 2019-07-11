@@ -6,8 +6,6 @@ import 'dart:io';
 class SocketProvider with ChangeNotifier{
   bool connect= false;
   connectSocket(String str) async{
-    print('called');
-
 
       SocketIO socket = await SocketIOManager().createInstance('https://arcane-dusk-93500.herokuapp.com/',enableLogging: true,query: {
         "auth": "--SOME AUTH STRING---",
@@ -15,15 +13,15 @@ class SocketProvider with ChangeNotifier{
         "timestamp": DateTime.now().toString()
       },);
       socket.onConnect((data){
-
-        notifyListeners();
         print(data);
-
+        print(data.toString());
       });
       connect=true;
       notifyListeners();
-
       socket.emit('subscribe',['$str']);
+      socket.on('subscribe',(data){
+        print(data+"hi");
+      });
       print('message emmited');
 
 

@@ -1,6 +1,8 @@
   import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/ui/transper_page1.dart';
+import 'package:socket_flutter_v1/ui/transport_page2.dart';
+import 'package:socket_flutter_v1/ui/transport_page3.dart';
 import 'package:socket_flutter_v1/utilities/size_config.dart';
 import 'package:socket_flutter_v1/utilities/socket_provider.dart';
 class Page1 extends StatefulWidget {
@@ -26,10 +28,15 @@ class _Page1State extends State<Page1> {
               Center(
                 child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(25),
-                      child: TransportPage1(),
-                    ),
+
+                    TransportPage1(),
+                    SizedBox(height: 10.0,),
+                    TransportPage2(),
+                    SizedBox(height: 10.0,),
+                    TransportPage3(),
+
+
+
 //                    MaterialButton(
 //                        color: Colors.grey,
 //                        child: Text('',style: TextStyle(color: Colors.black),),

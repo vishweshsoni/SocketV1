@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/utilities/socket_provider.dart';
-class TransportPage1 extends StatefulWidget {
+class TransportPage3 extends StatefulWidget {
   @override
-  _TransportPage1State createState() => _TransportPage1State();
+  _TransportPage3State createState() => _TransportPage3State();
 }
 
-class _TransportPage1State extends State<TransportPage1> {
+class _TransportPage3State extends State<TransportPage3> {
   @override
 
   @override
@@ -20,7 +20,7 @@ class _TransportPage1State extends State<TransportPage1> {
         color: Colors.white,
         child: Text('',style:TextStyle(color: Colors.black)),
         onPressed: ()async{
-          await appState.connectSocket('button1');
+          await appState.connectSocket('button3');
         }
     );
   }
