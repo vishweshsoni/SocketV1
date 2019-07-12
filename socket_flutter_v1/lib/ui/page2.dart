@@ -14,15 +14,9 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+  bool once1=true;
   @override
   Widget build(BuildContext context) {
-    Timer(
-        Duration(seconds: 1),
-            () {
-          SocketProvider().connectSocket("hi");
-        }
-    );
-
     return ChangeNotifierProvider(
       builder: (context)=>SocketProvider(),
       child: Scaffold(

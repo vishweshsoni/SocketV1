@@ -12,12 +12,22 @@ class SocketProvider with ChangeNotifier{
   bool button2= false;
   bool button3= false;
   bool connect= false;
-  connectSocket(String str) async{
-    socketIO = SocketIOManager().createSocketIO("https://arcane-dusk-93500.herokuapp.com","/");
-    socketIO.init();
-    socketIO.connect();
-    notifyListeners();
 
+  getConnection() async{
+    if(socketIO==null){
+      try{
+        socketIO =  SocketIOManager().createSocketIO("https://arcane-dusk-93500.herokuapp.com","/");
+        socketIO.init();
+        await socketIO.connect();
+        notifyListeners();
+      }catch(r){
+          print(r);
+      }
+
+    }
+  }
+  connectSocket(String str) async{
+    await  getConnection();
     if(socketIO!=null){
       try{
         String jsonData = '{"message":"$str"}';
@@ -25,40 +35,52 @@ class SocketProvider with ChangeNotifier{
             print(data);
             notifyListeners();
         });
-
       }catch(e){
         print(e);
         notifyListeners();
       }
     }
-
-    socketIO.subscribe('subscribe', (dynamic data){
-      if(data.contains("button1")){
+    try{
+        socketIO.subscribe('subscribe', (dynamic data){
+        if(data.contains("button1")){
           button1=true;
           notifyListeners();
+          Timer(
+              Duration(seconds: 4),
+                  () {
+                button1=false;
+                notifyListeners();
+              }
+          );
 
-      }
-      if(data.contains("button2")){
-        button2=true;
-        notifyListeners();
-
-      }
-      if(data.contains("button3")){
-        button3=true;
-        notifyListeners();
-
-      }
-    });
-
-    Timer(
-        Duration(seconds: 4),
-            () {
-          button1=false;
-          button2=false;
-          button3=false;
-          notifyListeners();
         }
-    );
+        if(data.contains("button2")){
+          button2=true;
+          notifyListeners();
+          Timer(
+              Duration(seconds: 4),
+                  () {
+                button2=false;
+                notifyListeners();
+              }
+          );
+
+        }
+        if(data.contains("button3")){
+          button3=true;
+          notifyListeners();
+          Timer(
+              Duration(seconds: 4),
+                  () {
+                button3=false;
+                notifyListeners();
+              }
+          );
+        }
+      });
+
+    }catch(e){print(e);}
+
 
 
 //
@@ -85,4 +107,9 @@ class SocketProvider with ChangeNotifier{
 
   }
 
+  destroy(){
+    if (socketIO != null) {
+      SocketIOManager().destroySocket(socketIO);
+    }
+  }
 }

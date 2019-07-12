@@ -13,14 +13,11 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
+  bool once= true;
   @override
   Widget build(BuildContext context) {
-    Timer(
-        Duration(seconds: 1),
-            () {
-            SocketProvider().connectSocket("hi");
-        }
-    );
+
+
     return ChangeNotifierProvider(
       builder:(context)=>SocketProvider(),
       child: Scaffold(
@@ -42,8 +39,6 @@ class _Page1State extends State<Page1> {
                     TransportPage2(),
                     SizedBox(height: 10.0,),
                     TransportPage3(),
-
-
 
 //                    MaterialButton(
 //                        color: Colors.grey,
@@ -69,5 +64,10 @@ class _Page1State extends State<Page1> {
     );
 
   }
+  @override
+  void dispose() {
+    // TODO: implement dispose
 
+    super.dispose();
+  }
 }

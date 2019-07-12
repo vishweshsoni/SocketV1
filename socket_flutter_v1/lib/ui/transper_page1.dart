@@ -9,6 +9,12 @@ class TransportPage1 extends StatefulWidget {
 }
 
 class _TransportPage1State extends State<TransportPage1> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    SocketProvider().getConnection();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -14,14 +14,11 @@ class Page3 extends StatefulWidget {
 }
 
 class _Page3State extends State<Page3> {
+
+  bool once3= true;
+
   @override
   Widget build(BuildContext context) {
-    Timer(
-        Duration(seconds: 1),
-            () {
-          SocketProvider().connectSocket("hi");
-        }
-    );
 
     return ChangeNotifierProvider(
       builder: (context)=>SocketProvider(),

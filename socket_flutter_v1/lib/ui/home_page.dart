@@ -21,8 +21,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var appState = Provider.of<SocketProvider>(context);
 
+    var appState= Provider.of<SocketProvider>(context);
     SizeConfig().init(context);
 
     return SafeArea(
@@ -40,10 +40,9 @@ class _HomePageState extends State<HomePage> {
                       alignment:FractionalOffset.topCenter,
                       fit: BoxFit.fill,
                       child:Image.asset("res/img1.jpg"),
+
                     ),
                   ),
-
-
 
               Center(
                 child: Column(
@@ -56,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                             Text('Room-1', style: TextStyle(color: Colors.black)),
                         onPressed: () async {
                           Navigator.pushNamed(context, '/Room1');
+                         await appState.connectSocket("hi");
                         }),
                     MaterialButton(
                         shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -64,8 +64,9 @@ class _HomePageState extends State<HomePage> {
                           'Room-2',
                           style: TextStyle(color: Colors.black),
                         ),
-                        onPressed: () {
+                        onPressed: ()async {
                           Navigator.pushNamed(context, '/Room2');
+                          await appState.connectSocket("hi");
                         }),
                     MaterialButton(
                         shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -74,8 +75,9 @@ class _HomePageState extends State<HomePage> {
                           'Room-3',
                           style: TextStyle(color: Colors.black),
                         ),
-                        onPressed: () {
+                        onPressed: () async{
                           Navigator.pushNamed(context, '/Room3');
+                         await  appState.connectSocket("hi");
                         }),
                   ],
                 ),
