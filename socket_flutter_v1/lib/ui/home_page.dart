@@ -4,6 +4,7 @@ import 'package:socket_flutter_v1/utilities/scoket_provider3.dart';
 import 'package:socket_flutter_v1/utilities/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_flutter_v1/utilities/socket_provider.dart';
+
 const String uri = "https://arcane-dusk-93500.herokuapp.com/";
 
 class HomePage extends StatefulWidget {
@@ -12,70 +13,80 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void initState() {
     // TODO: implement initState
 
     super.initState();
   }
 
-
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    var appState= Provider.of<SocketProvider>(context);
+    var appState = Provider.of<SocketProvider>(context);
+
     SizeConfig().init(context);
 
-
-    return Scaffold(
-
-        appBar: AppBar(title:Text('SocketIOExample',style: TextStyle(color: Colors.black),),backgroundColor: Colors.grey,),
-        backgroundColor: Colors.blueAccent,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
         body: Container(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height:SizeConfig.blockSizeHorizontal*60,
-                ),
-                Center(
-                  child: Column(
-                    children: <Widget>[
-                  MaterialButton(
-                      color: Colors.grey,
-                      child: Text('Room-1',style:TextStyle(color: Colors.black)),
-                      onPressed: ()async{
-                        Navigator.pushNamed(context,'/Room1');
-                      }
+          child:Stack(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery.of(context).size.height/2.2,
+                    width: MediaQuery.of(context).size.width,
+                    child: FittedBox(
+                      alignment:FractionalOffset.topCenter,
+                      fit: BoxFit.fill,
+                      child:Image.asset("res/img1.jpg"),
+                    ),
                   ),
 
-                MaterialButton(
-                  color: Colors.grey,
-                  child: Text('Room-2',style: TextStyle(color: Colors.black),),
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/Room2');
-                  }
+
+
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 30.0,),
+                    MaterialButton(
+                      shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        color: Colors.grey,
+                        child:
+                            Text('Room-1', style: TextStyle(color: Colors.black)),
+                        onPressed: () async {
+                          Navigator.pushNamed(context, '/Room1');
+                        }),
+                    MaterialButton(
+                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        color: Colors.grey,
+                        child: Text(
+                          'Room-2',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/Room2');
+                        }),
+                    MaterialButton(
+                        shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        color: Colors.grey,
+                        child: Text(
+                          'Room-3',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/Room3');
+                        }),
+                  ],
+                ),
               ),
-
-                  MaterialButton(
-                color: Colors.grey,
-                child: Text('Room-3',style: TextStyle(color: Colors.black),),
-                onPressed: (){
-                  Navigator.pushNamed(context, '/Room3');
-                  }
-                     ),
-
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                ],
+              )
+            ],
+          )
+          ,
         ),
+      ),
     );
-
   }
-
 }

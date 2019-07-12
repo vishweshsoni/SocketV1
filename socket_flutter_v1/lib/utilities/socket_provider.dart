@@ -51,7 +51,7 @@ class SocketProvider with ChangeNotifier{
     });
 
     Timer(
-        Duration(seconds: 3),
+        Duration(seconds: 4),
             () {
           button1=false;
           button2=false;

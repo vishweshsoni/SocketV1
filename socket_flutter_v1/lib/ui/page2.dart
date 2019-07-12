@@ -26,7 +26,7 @@ class _Page2State extends State<Page2> {
     return ChangeNotifierProvider(
       builder: (context)=>SocketProvider(),
       child: Scaffold(
-        appBar: AppBar(title:Text('Room2',style: TextStyle(color: Colors.black)),backgroundColor: Colors.white,),
+        appBar: AppBar(title:Text('Room-2',style: TextStyle(color: Colors.black)),backgroundColor: Colors.white,),
         backgroundColor: Colors.lightBlueAccent,
         body: Container(
           child: Column(
